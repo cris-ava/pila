@@ -1,0 +1,44 @@
+
+from pila import Pila
+from random import choice
+
+
+pila1 = Pila()
+
+class Pelis():
+        titulo, estudio, anio = None, None, None
+
+   
+titulo = ['Iron Man I', 'Pantera negra', 'Capitan America soldado del invierno', 'Capitana Marvel']
+estudio = ['Marvel', 'DC']
+anio_estreno = ['2004', '2014', '2010', '2018']
+
+for i in range(len(titulo)):
+    dato = Pelis()
+    dato.titulo = titulo[i]
+    dato.estudio = choice(estudio)
+    dato.anio = choice(anio_estreno)
+    dic = {'titulo': titulo[i], 'estudio': choice(estudio), 'anio':choice(anio_estreno)}
+    print(dato.titulo, dato.estudio, dato.anio)
+    pila1.apilar(dato)
+
+
+contador=0
+print()
+while(not pila1.pila_vacia()):
+    dato = pila1.desapilar()
+
+    # !A
+    if(dato.anio == '2014'):
+        print('Titulo del anio 2014', dato.titulo)
+    # !B
+    if(dato.anio == '2018'):
+        contador += 1
+    
+    # !C
+    if(dato.anio == '2016' and dato.estudio == 'Marvel'):
+        print('Pelicula estrenada en el 2016 por Marvel: ', dato.titulo)
+
+    print()
+    print('La cantidad de peliculas del anio 2018 son: ', contador)
+    print()
